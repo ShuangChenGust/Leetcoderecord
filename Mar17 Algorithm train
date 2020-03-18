@@ -1,0 +1,185 @@
+# 1001
+a, b = input().split()
+c = int(a) + int(b)
+print(format(c, ','))
+
+# ----->3.选中要注释的代码，按下ctrl+/注释:
+
+# 1002 Python中的中括号[]：
+# 代表list列表数据类型
+
+# Python中的小括号（）：
+# 代表tuple元祖数据类型
+
+# Python中的花括号{}：
+# 代表dict字典数据类型
+# dic = {'jon':'boy','lili"':'girl'}
+# print (dic)
+# # 3 {'jon': 'boy', 'lili"': 'girl'}
+
+# -----
+#
+# Python range() 函数用法
+# Python 内置函数 Python 内置函数
+#
+# python range() 函数可创建一个整数列表，一般用在 for 循环中。
+#
+# 函数语法
+# range(start, stop[, step]) 第三个是步长
+#
+# pop() is an inbuilt function in Python that removes and returns last value from the list or the given index value.
+# Parameter : index (optional) - The value at index is popped out and removed.
+# If the index is not given, then the last element is popped out and removed.
+
+# Python 字典(Dictionary) update()方法
+# update()方法语法：
+#
+# dict.update(dict2)
+# 有相同的键会直接替换成 update 的值:
+#
+# >>> a = {1: 2, 2: 2}
+# >>> b = {1: 1, 3: 3}
+# >>> b.update(a)
+# >>> print b
+# {1: 2, 2: 2, 3: 3}
+
+# round() 方法返回浮点数x的四舍五入值。
+#
+# 语法
+# 以下是 round() 方法的语法:
+#
+# round( x [, n]  )
+
+# EX：
+# round(80.23456, 2) :  80.23
+# round(100.000056, 3) :  100.0
+# round(-100.000056, 3) :  -100.0
+
+# sorted() 函数对所有可迭代的对象进行排序操作。
+#
+# sort 与 sorted 区别：
+#
+# sort 是应用在 list 上的方法，sorted 可以对所有可迭代的对象进行排序操作。
+#
+# list 的 sort 方法返回的是对已经存在的列表进行操作，无返回值，而内建函数 sorted 方法返回的是一个新的 list，而不是在原来的基础上进行的操作。
+#
+# >>>a = [5,7,6,3,4,1,2]
+# >>> b = sorted(a)       # 保留原列表
+# >>> a
+# [5, 7, 6, 3, 4, 1, 2]
+# >>> b
+# [1, 2, 3, 4, 5, 6, 7]
+#
+# str.join(元组、列表、字典、字符串) 之后生成的只能是字符串。
+#
+# 所以很多地方很多时候生成了元组、列表、字典后，可以用 join() 来转化为字符串。
+#
+# list=['1','2','3','4','5']
+# print(''.join(list))
+# 结果：12345
+#
+# seq = {'hello':'nihao','good':2,'boy':3,'doiido':4}
+# print('-'.join(seq))        #字典只对键进行连接
+# 结果：hello-good-boy-doiido
+
+# 1002 Solution：
+
+a1 = list(input().split())
+a2 = list(input().split())
+D1 = {}
+D2 = {}
+D3 = {}
+key = []
+for i in range(1, len(a1), 2):
+    D1[int(a1[i])] = float(a1[i + 1])
+for i in range(1, len(a2), 2):
+    D2[int(a2[i])] = float(a2[i + 1])
+
+for k1, v1 in D1.items():
+    for k2, v2 in D2.items():
+        if k1 == k2:
+            key.append(int(k1))
+            if (v1 + v2) != 0.0:
+                D3[k1] = v1 + v2
+for i in range(len(key)):
+    r1 = D1.pop(key[i])
+    r2 = D2.pop(key[i])
+
+D3.update(D1)
+D3.update(D2)
+L = sorted(D3)[::-1]
+# print(D3)
+out = []
+out.append(str(len(D3)))
+for i in L:
+    out.append(str(i))
+    out.append(str(round(D3[i], 1)))
+print(' '.join(out))
+
+# ----My submission:
+a = [2, 1,  2.4,  0, 3.2]
+b = [2, 2, 1.5, 1, 0.5 ]
+# D1 = {}
+# D2 = {}
+# D3 = {}
+# key = []
+# for i in range(1, len(a1), 2):
+#     D1[int(a1[i])] = float(a1[i + 1])
+# for i in range(1, len(a2), 2):
+#     D2[int(a2[i])] = float(a2[i + 1])
+#
+# for k1, v1 in D1.items():
+#     for k2, v2 in D2.items():
+#         if k1 == k2:
+#             key.append(int(k1))
+#             if (v1 + v2) != 0.0:
+#                 D3[k1] = v1 + v2
+# for i in range(len(key)):
+#     r1 = D1.pop(key[i])
+#     r2 = D2.pop(key[i])
+#
+# D3.update(D1)
+# D3.update(D2)
+# L = sorted(D3)[::-1]
+# print(D3)
+# print(str(L))
+# out = []
+# out.append(str(len(D3)))
+# for i in L:
+#     out.append(str(i))
+#     out.append(str(round(D3[i], 1)))
+# print(' '.join(out))
+#
+
+a = list(input().split())
+b = list(input().split())
+d1 = {}
+d2 = {}
+d3 = {}
+key = []
+for i in range(1, len(a), 2):
+    d1[int(a[i])] = float(a[i + 1])
+for i in range(1, len(b), 2):
+    d2[int(b[i])] = float(b[i + 1])
+
+for k1, v1 in d1.items():
+    for k2, v2 in d2.items():
+        if k1 == k2:
+            key.append(int(k1))
+            if (v1 + v2) != 0.0:
+                d3[k1] = v1 + v2
+
+# Duplicate will be deleted in the dictionary
+
+for i in range(len(key)):
+    d1.pop(key[i])
+    d2.pop(key[i])
+d3.update(d1)
+d3.update(d2)
+L = sorted(d3)[::-1]
+out = []
+out.append(str(len(L)))
+for i in L:
+    out.append(str(i))
+    out.append(str(round(d3[i], 1)))
+print(' '.join(out))
