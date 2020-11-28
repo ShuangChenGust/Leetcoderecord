@@ -66,7 +66,8 @@
 // N is an integer within the range [1..100,000];
 // each element of array A is an integer within the range [0..1,000,000,000].
 
-//注意Js语言里 / 不是整除 要用parseInt向下取整
+//注意Js语言里 / 不是整除 要用parseInt向下取整;
+//在java中，如果两个运算数都是整数，那么除法运算符的运算结果也是整数，并且会省略一切小数点后的值（或者说是两个整数相除得到的商）。而取余运算符（%），则对应的是两个整数相除得到的余数。
 
 function solution(A) {
     // write your code in JavaScript (Node.js 8.9.4)
